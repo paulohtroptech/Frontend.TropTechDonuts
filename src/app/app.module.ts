@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CommonModule } from '@angular/common';
 import { CadastraClienteComponent } from './componentes/cliente/cadastra-cliente/cadastra-cliente.component';
 import { ListaClienteComponent } from './componentes/cliente/lista-cliente/lista-cliente.component';
 import { EditaClienteComponent } from './componentes/cliente/edita-cliente/edita-cliente.component';
@@ -12,6 +13,13 @@ import { ListaPedidoComponent } from './componentes/pedido/lista-pedido/lista-pe
 import { ListaProdutoComponent } from './componentes/produto/lista-produto/lista-produto.component';
 import { CadastraProdutoComponent } from './componentes/produto/cadastra-produto/cadastra-produto.component';
 import { EditaProdutoComponent } from './componentes/produto/edita-produto/edita-produto.component';
+import { MensagemComponent } from './componentes/mensagem/mensagem.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { IndexComponent } from './componentes/index/index/index.component';
+import { FormularioClienteComponent } from './componentes/cliente/formulario-cliente/formulario-cliente.component';
+import { AlertaComponent } from './componentes/alerta/alerta.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +32,20 @@ import { EditaProdutoComponent } from './componentes/produto/edita-produto/edita
     ListaPedidoComponent,
     ListaProdutoComponent,
     CadastraProdutoComponent,
-    EditaProdutoComponent
+    EditaProdutoComponent,
+    MensagemComponent,
+    IndexComponent,
+    FormularioClienteComponent,
+    AlertaComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

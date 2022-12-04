@@ -1,0 +1,4 @@
+<div class="mensagem" *ngIf="mensagemService.mensagem">
+    <p>{{mensagemService.mensagem}}</p>
+    <a (click)="mensagemService.LimparMensagem()">X</a>
+</div>

@@ -1,0 +1,38 @@
+.alerta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: absolute;
+  background: rgb(220,53,69);
+  padding: 15px 20px;
+  bottom: 30px;
+  left: 30px;
+  border-radius: 10px;
+  z-index: 10;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: #FFF;
+  animation: animacaoAlerta 0.6s;
+}
+
+.alerta a {
+  background: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+.alerta p {
+  margin: 0;
+  padding: 0;
+}
+
+
+@keyframes animacaoAlerta {
+  from {
+    transform: translateX(-430px);
+  }
+
+  to {
+    transform: translateX(30);
+  }
+}

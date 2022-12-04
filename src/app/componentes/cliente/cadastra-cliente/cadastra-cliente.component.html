@@ -1,1 +1,43 @@
-<p>cadastra-cliente works!</p>
+<div class="col-8 offset-2">
+    <h3 class="mb-3">Cadastrar cliente</h3>
+    <form [formGroup]="formAdicionarCliente" (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm">
+        <div class="form-row mb-3">
+
+            <label for="cpf" class="form-label">CPF <span>*</span></label>
+            <input type="text" name="cpf" placeholder="Preencha com o seu CPF" formControlName="cpf"
+                class="form-control">
+            <div class="text-danger mt-1" *ngIf="Cpf!.invalid && formDirective.submitted">
+                <span *ngIf="Cpf.errors?.['required']">Ops, preencha o seu CPF.</span>
+                <span *ngIf="Cpf.errors?.['minlength']">Ops, seu CPF deve conter no mínimo 11 números.</span>
+                <span *ngIf="Cpf.errors?.['maxlength']">Ops, seu CPF deve conter no máximo 11 números.</span>
+            </div>
+
+        </div>
+        <div class="form-row mb-3">
+
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome <span>*</span></label>
+                <input formControlName="nome" type="text" name="nome" class="form-control" />
+                <div class="text-danger" *ngIf="Nome!.invalid && formDirective.submitted">
+                    <span *ngIf="Nome.errors?.['required']">Ops, preencha o seu nome.</span>
+                    <span *ngIf="Nome.errors?.['minlength']">Ops, seu nome deve ter pelo menos 3 caracteres.</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row mb-3">
+            <label for="DataNascimento" class="form-label">Data de nascimento <span>*</span></label>
+            <input formControlName="dataNascimento" type="date" name="DataNascimento" class="form-control" />
+            <div class="text-danger" *ngIf="DataNascimento!.invalid && formDirective.submitted">
+                <span *ngIf="DataNascimento.errors?.['required']">Ops, preencha a sua Data de Nascimento.</span>
+            </div>
+        </div>
+        <div class="form-row mb-3">
+            <input type="submit" value="Enviar" class="btn btn-primary">
+        </div>
+
+        <div class="form-row mb-3">
+            <span class="text-danger">* Campos obrigatórios</span>
+        </div>
+
+    </form>
+</div>
