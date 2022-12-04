@@ -18,8 +18,7 @@ import { MensagemComponent } from './componentes/mensagem/mensagem.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { IndexComponent } from './componentes/index/index/index.component';
-import { FormularioClienteComponent } from './componentes/cliente/formulario-cliente/formulario-cliente.component';
-import { AlertaComponent } from './componentes/alerta/alerta.component';
+import { EstoqueProdutoComponent } from './componentes/produto/estoque-produto/estoque-produto.component';
 
 @NgModule({
   declarations: [
@@ -35,8 +34,7 @@ import { AlertaComponent } from './componentes/alerta/alerta.component';
     EditaProdutoComponent,
     MensagemComponent,
     IndexComponent,
-    FormularioClienteComponent,
-    AlertaComponent
+    EstoqueProdutoComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,8 +4,7 @@
         <div class="form-row mb-3">
 
             <label for="cpf" class="form-label">CPF <span>*</span></label>
-            <input type="text" name="cpf" placeholder="Preencha com o seu CPF" formControlName="cpf"
-                class="form-control">
+            <input type="text" name="cpf" formControlName="cpf" class="form-control">
             <div class="text-danger mt-1" *ngIf="Cpf!.invalid && formDirective.submitted">
                 <span *ngIf="Cpf.errors?.['required']">Ops, preencha o seu CPF.</span>
                 <span *ngIf="Cpf.errors?.['minlength']">Ops, seu CPF deve conter no mínimo 11 números.</span>

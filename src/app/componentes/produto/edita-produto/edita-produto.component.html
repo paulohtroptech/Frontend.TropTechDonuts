@@ -1,1 +1,44 @@
-<p>edita-produto works!</p>
+<div class="col-8 offset-2">
+    <h3 class="mb-3">Editar produto</h3>
+    <form [formGroup]="formEditaProduto" (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm">
+        <input type="hidden" name="id" formControlName="id">
+
+        <div class="form-row mb-3">
+
+            <label for="descricao" class="form-label">Descrição <span>*</span></label>
+            <input type="text" name="descricao" placeholder="Preencha a descrição do Produto" formControlName="descricao"
+                class="form-control">
+            <div class="text-danger mt-1" *ngIf="Descricao!.invalid && formDirective.submitted">
+                <span *ngIf="Descricao.errors?.['required']">Ops, preencha a descricao.</span>
+                <span *ngIf="Descricao.errors?.['minlength']">Ops, a Descricao deve conter no mínimo 3 caracteres.</span>
+            </div>
+
+        </div>
+        <div class="form-row mb-3">
+
+            <div class="mb-3">
+                <label for="preco" class="form-label">Preço <span>*</span></label>
+                <input formControlName="preco" type="number" min="1.00" step="0.01" name="preco" class="form-control">
+                <div class="text-danger" *ngIf="Preco!.invalid && formDirective.submitted">
+                    <span *ngIf="Preco.errors?.['required']">Ops, preencha o preco.</span>
+                    <span *ngIf="Preco.errors?.['minlength']">Ops, o preço deve ser maior que zero.</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row mb-3">
+            <label for="dataValidade" class="form-label">Data de validade <span>*</span></label>
+            <input formControlName="dataValidade" type="date" name="dataValidade" class="form-control" />
+            <div class="text-danger" *ngIf="DataValidade!.invalid && formDirective.submitted">
+                <span *ngIf="DataValidade.errors?.['required']">Ops, preencha a Data de validade.</span>
+            </div>
+        </div>
+        <div class="form-row mb-3">
+            <input type="submit" value="Enviar" class="btn btn-primary">
+        </div>
+
+        <div class="form-row mb-3">
+            <span class="text-danger">* Campos obrigatórios</span>
+        </div>
+
+    </form>
+</div>

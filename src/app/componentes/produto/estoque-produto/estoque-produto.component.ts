@@ -6,13 +6,19 @@ import { ProdutoService } from 'src/app/servicos/produto/produto.service';
 import { IProduto } from '../IProduto';
 
 @Component({
-  selector: 'app-edita-produto',
-  templateUrl: './edita-produto.component.html',
-  styleUrls: ['./edita-produto.component.css']
+  selector: 'app-estoque-produto',
+  templateUrl: './estoque-produto.component.html',
+  styleUrls: ['./estoque-produto.component.css']
 })
-export class EditaProdutoComponent implements OnInit {
+export class EstoqueProdutoComponent implements OnInit {
 
-  formEditaProduto!: FormGroup;
+  formEstoqueProduto!: FormGroup;
+
+  id!: number;
+  quantidadeAtual!: number;
+  descricao!: string;
+  preco!: number;
+  dataValidade!: Date;
 
   constructor(
     private _route: ActivatedRoute,
@@ -32,59 +38,60 @@ export class EditaProdutoComponent implements OnInit {
         });
       });
 
-    this.formEditaProduto = new FormGroup({
+    this.formEstoqueProduto = new FormGroup({
       id: new FormControl(null),
-      descricao: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      preco: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      dataValidade: new FormControl(null, [Validators.required])
+      novaQuantidade: new FormControl(null, [Validators.required, Validators.minLength(1)])
     })
+
 
   }
 
   private _atualizarValoresForm(produto: IProduto) {
-    this.formEditaProduto.patchValue({
+    this.id = produto.id;
+    this.quantidadeAtual = produto.quantidadeEstoque;
+    this.descricao = produto.descricao,
+    this.preco = produto.preco,
+    this.dataValidade = produto.dataValidade
+    this.formEstoqueProduto.patchValue({
       id: produto.id,
-      descricao: produto.descricao,
-      preco: produto.preco,
-      dataValidade: produto.dataValidade.toString().split('T')[0]
     });
   }
 
-  get Descricao() {
-    return this.formEditaProduto.get('descricao')!;
+
+
+
+  get Id() {
+    return this.formEstoqueProduto.get('id')!;
   }
-  get Preco() {
-    return this.formEditaProduto.get('preco')!;
-  }
-  get DataValidade() {
-    return this.formEditaProduto.get('dataValidade')!;
+  get NovaQuantidade() {
+    return this.formEstoqueProduto.get('novaQuantidade')!;
   }
 
 
   async onSubmit(formDirective: FormGroupDirective) {
-    if (this.formEditaProduto.invalid)
+    if (this.formEstoqueProduto.invalid)
       return;
 
     const produtoAtualizado: IProduto = {
-      id: this.formEditaProduto.value.id,
-      descricao: this.formEditaProduto.value.descricao,
-      preco: this.formEditaProduto.value.preco,
-      quantidadeEstoque: 0,
-      dataValidade: this.formEditaProduto.value.dataValidade,
+      id: this.formEstoqueProduto.value.id,
+      descricao: this.descricao,
+      preco: this.preco,
+      quantidadeEstoque: this.formEstoqueProduto.value.novaQuantidade,
+      dataValidade: this.dataValidade,
       ativo: true,
     }
 
     console.log(produtoAtualizado);
 
     await this._produtoService
-      .AtualizarProduto(produtoAtualizado)
+      .AtualizarQuantidadeProduto(produtoAtualizado)
       .subscribe({
         error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error)),
         complete: () => {
-          this._mensagemService.AdicionarMensagem("O Produto foi atualizado com sucesso.")
+          this._mensagemService.AdicionarMensagem("A quantidade foi atualizada com sucesso.")
           this._router.navigate(['/produto'])
 
-          this.formEditaProduto.reset();
+          this.formEstoqueProduto.reset();
           formDirective.resetForm();
 
         }

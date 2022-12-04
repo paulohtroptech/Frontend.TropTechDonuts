@@ -1,1 +1,34 @@
-<p>lista-produto works!</p>
+<h3 class="text-center mt-5 mb-5">Gerenciar produtos</h3>
+<table class="table table-hover  mt-3">
+    <thead>
+        <tr class="text-center">
+            <th scope="col">#</th>
+            <th scope="col">Descição</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Data de validade</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr class="text-center" *ngFor="let produto of listaDeProdutos">
+            <th>{{produto.id}}</th>
+            <td>{{produto.descricao}}</td>
+            <td>R$ {{produto.preco.toFixed(2)}}</td>
+            <td>{{produto.quantidadeEstoque}}</td>
+            <td>{{produto.dataValidade | date : 'dd/MM/yyyy'}}</td>
+            <th scope="row">
+                <a (click)="removerProduto(produto.id)" class="btn btn-danger btn-sm me-2" title="Remover produto">
+                    <i class="bi bi-trash text-black"></i>
+                </a>
+                <a (click)="editaProduto(produto.id)" class="btn btn-warning btn-sm  me-2" title="Editar produto">
+                    <i class="bi bi-pencil-fill text-black"></i>
+                </a>
+                <a (click)="editaEstoqueProduto(produto.id)" class="btn btn-success btn-sm" title="Gerenciar estoque do produto">
+                    <i class="bi bi-clipboard-data text-black"></i>
+                </a>
+            </th>
+        </tr>
+    </tbody>
+</table>

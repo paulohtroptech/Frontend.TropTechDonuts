@@ -1,0 +1,30 @@
+<div class="col-8 offset-2">
+    <h3 class="mb-3">Gerenciar estoque</h3>
+    <form [formGroup]="formEstoqueProduto" (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm">
+        <input type="hidden" name="id" formControlName="id">
+        <div class="form-row mb-3">
+            <label class="form-label"><span class="fw-bold">Descrição:</span> {{descricao}}</label>
+        </div>
+        <div class="form-row mb-3">
+            <label Class="form-label"><span class="fw-bold">Quantidade atual:</span> {{quantidadeAtual}}</label>
+        </div>
+        <div class="form-row mb-3">
+            <div class="mb-3">
+                <label for="novaQuantidade" class="form-label">Nova quantidade <span>*</span></label>
+                <input formControlName="novaQuantidade" type="number" min="1" step="1" name="novaQuantidade" class="form-control">
+                <div class="text-danger" *ngIf="NovaQuantidade!.invalid && formDirective.submitted">
+                    <span *ngIf="NovaQuantidade.errors?.['required']">Ops, preencha a nova quantidade.</span>
+                    <span *ngIf="NovaQuantidade.errors?.['minlength']">Ops, a nova quantidade deve ser maior que zero.</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row mb-3">
+            <input type="submit" value="Enviar" class="btn btn-primary">
+        </div>
+
+        <div class="form-row mb-3">
+            <span class="text-danger">* Campos obrigatórios</span>
+        </div>
+
+    </form>
+</div>

@@ -54,7 +54,7 @@ export class CadastraClienteComponent implements OnInit {
     await this._clienteService
       .AdicionarCliente(novoCliente)
       .subscribe({
-        error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem).replace('"','')),
+        error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem)),
         complete: () => {
           this._mensagemService.AdicionarMensagem("O cliente foi cadastrado com sucesso.")
           //this._router.navigate(['/cliente'])

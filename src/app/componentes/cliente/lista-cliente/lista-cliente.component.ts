@@ -29,7 +29,7 @@ export class ListaClienteComponent implements OnInit {
     await this._clienteService.BuscarTodosClientes()
       .subscribe({
         next: (clientes) => this.listaDeClientes = clientes,
-        error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem).replace('"', '')),
+        error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem)),
       });
   }
 
@@ -43,37 +43,18 @@ export class ListaClienteComponent implements OnInit {
 
   async removerCliente(cpf: string) {
 
-    let resposta = confirm("Você deseja realmente deletar o cliente?");
+    let resposta = confirm("Você deseja realmente remover o cliente?");
     if (resposta == true) {
       await this._clienteService.RemoverCliente(cpf).subscribe({
-        error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem).replace('"', '')),
+        error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem)),
         complete: () => {
-          this._mensagemService.AdicionarMensagem("Cliente excluído com sucesso!")
+          this._mensagemService.AdicionarMensagem("O Cliente foi removido com sucesso!")
           setTimeout(() => {
             window.location.reload();
           }, 4000);
         },
       });
     }
-
-
-
   }
 
 }
-
-
-// function funcao1()
-// {
-// var x;
-// var r=confirm("Escolha um valor!");
-// if (r==true)
-//   {
-//   x="você pressionou OK!";
-//   }
-// else
-//   {
-//   x="Você pressionou Cancelar!";
-//   }
-// document.getElementById("demo").innerHTML=x;
-// }

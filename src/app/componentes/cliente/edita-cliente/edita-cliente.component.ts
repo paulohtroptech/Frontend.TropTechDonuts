@@ -75,7 +75,7 @@ export class EditaClienteComponent implements OnInit {
     await this._clienteService
       .AtualizarCliente(clienteAtualizado)
       .subscribe({
-        error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error)),
+        error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem)),
         complete: () => {
           this._mensagemService.AdicionarMensagem("O cliente foi atualizado com sucesso.")
           this._router.navigate(['/cliente'])

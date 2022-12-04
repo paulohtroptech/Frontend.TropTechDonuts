@@ -5,6 +5,8 @@ import { EditaClienteComponent } from './componentes/cliente/edita-cliente/edita
 import { ListaClienteComponent } from './componentes/cliente/lista-cliente/lista-cliente.component';
 import { IndexComponent } from './componentes/index/index/index.component';
 import { CadastraProdutoComponent } from './componentes/produto/cadastra-produto/cadastra-produto.component';
+import { EditaProdutoComponent } from './componentes/produto/edita-produto/edita-produto.component';
+import { EstoqueProdutoComponent } from './componentes/produto/estoque-produto/estoque-produto.component';
 import { ListaProdutoComponent } from './componentes/produto/lista-produto/lista-produto.component';
 
 const routes: Routes = [
@@ -31,7 +33,19 @@ const routes: Routes = [
   {
     path: 'produto/cadastrar',
     component: CadastraProdutoComponent,
-  }
+  },
+  {
+    path: 'produto/editar/:id',
+    component: EditaProdutoComponent,
+  },
+  {
+    path: 'produto/editar/estoque',
+    component: EstoqueProdutoComponent,
+  },
+  {
+    path: 'produto/editar/estoque/:id',
+    component: EstoqueProdutoComponent,
+  },
 
 ];
 
