@@ -38,4 +38,8 @@ export class ProdutoService {
   AtualizarQuantidadeProduto(produtoParaAtualizar: IProduto): Observable<IProduto> {
     return this._metodoHttp.patch<IProduto>(`${API_URL}/produto/quantidade`, produtoParaAtualizar);
   }
+
+  AtualizarStatusProduto(produtoParaAtualizar: IProduto): Observable<IProduto> {
+    return this._metodoHttp.patch<IProduto>(`${API_URL}/produto/status`, produtoParaAtualizar);
+  }
 }

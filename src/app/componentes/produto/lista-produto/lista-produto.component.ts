@@ -12,6 +12,7 @@ import { IProduto } from '../IProduto';
 export class ListaProdutoComponent implements OnInit {
 
   listaDeProdutos: IProduto[] = [];
+  produtoBuscado?: IProduto;
 
   constructor(
     private _produtoService: ProdutoService,
@@ -28,7 +29,7 @@ export class ListaProdutoComponent implements OnInit {
     await this._produtoService.BuscarTodosProdutos()
       .subscribe({
         next: (produtos) => this.listaDeProdutos = produtos,
-        error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem).replace('"', '')),
+        error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem)),
       });
   }
 
@@ -53,7 +54,7 @@ export class ListaProdutoComponent implements OnInit {
     let resposta = confirm("Você deseja realmente remover o produto?");
     if (resposta == true) {
       await this._produtoService.RemoverProduto(id).subscribe({
-        error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem).replace('"', '')),
+        error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem)),
         complete: () => {
           this._mensagemService.AdicionarMensagem("O Produto foi removido com sucesso!")
           setTimeout(() => {
@@ -61,6 +62,64 @@ export class ListaProdutoComponent implements OnInit {
           }, 4000);
         },
       });
+    }
+  }
+
+  async trocarStatusProduto(id: number) {
+
+    let produtoBuscado = this.listaDeProdutos.find((produto) => produto.id == id)
+
+    let resposta: boolean;
+
+    if (produtoBuscado?.ativo) {
+      resposta = confirm("Você deseja realmente Desativar o produto?");
+
+      if (resposta) {
+        
+        const produtoAtualizado: IProduto = {
+          id: produtoBuscado!.id,
+          descricao: produtoBuscado!.descricao,
+          preco: produtoBuscado!.preco,
+          quantidadeEstoque: produtoBuscado!.quantidadeEstoque,
+          dataValidade: produtoBuscado!.dataValidade,
+          ativo: false,
+        }
+        
+        await this._produtoService.AtualizarStatusProduto(produtoAtualizado).subscribe({
+          error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem)),
+          complete: () => {
+            this._mensagemService.AdicionarMensagem("O Produto foi Desativado com sucesso!")
+            setTimeout(() => {
+              window.location.reload();
+            }, 4000);
+          },
+        });
+      }
+
+    } else {
+
+      resposta = confirm("Você deseja realmente Ativar o produto?");
+      if (resposta) {
+
+        const produtoAtualizado: IProduto = {
+          id: produtoBuscado!.id,
+          descricao: produtoBuscado!.descricao,
+          preco: produtoBuscado!.preco,
+          quantidadeEstoque: produtoBuscado!.quantidadeEstoque,
+          dataValidade: produtoBuscado!.dataValidade,
+          ativo: true,
+        }
+
+        await this._produtoService.AtualizarStatusProduto(produtoAtualizado!).subscribe({
+          error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem)),
+          complete: () => {
+            this._mensagemService.AdicionarMensagem("O Produto foi Ativado com sucesso!")
+            setTimeout(() => {
+              window.location.reload();
+            }, 4000);
+          },
+        });
+      }
     }
   }
 

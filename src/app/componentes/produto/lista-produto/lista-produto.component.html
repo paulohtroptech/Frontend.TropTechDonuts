@@ -25,9 +25,15 @@
                 <a (click)="editaProduto(produto.id)" class="btn btn-warning btn-sm  me-2" title="Editar produto">
                     <i class="bi bi-pencil-fill text-black"></i>
                 </a>
-                <a (click)="editaEstoqueProduto(produto.id)" class="btn btn-success btn-sm" title="Gerenciar estoque do produto">
+                <a (click)="editaEstoqueProduto(produto.id)" class="btn btn-success btn-sm me-2"
+                    title="Gerenciar estoque do produto">
                     <i class="bi bi-clipboard-data text-black"></i>
                 </a>
+                <a (click)="trocarStatusProduto(produto.id)" class="btn btn-info btn-sm"
+                    title="Ativar/Desativar produto">
+                    <i class="bi bi-arrow-left-right text-black"></i>
+                </a>
+                
             </th>
         </tr>
     </tbody>
