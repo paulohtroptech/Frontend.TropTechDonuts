@@ -79,7 +79,7 @@ export class EditaProdutoComponent implements OnInit {
     await this._produtoService
       .AtualizarProduto(produtoAtualizado)
       .subscribe({
-        error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error)),
+        error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem)),
         complete: () => {
           this._mensagemService.AdicionarMensagem("O Produto foi atualizado com sucesso.")
           this._router.navigate(['/produto'])

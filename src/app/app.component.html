@@ -31,8 +31,12 @@
                                 <li><a class="dropdown-item" routerLink="/produto">Listar</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a routerLink="/pedido" class="nav-link">Pedidos</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pedidos</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" routerLink="/pedido/cadastrar">Cadastrar</a></li>
+                                <li><a class="dropdown-item" routerLink="/pedido">Listar</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>

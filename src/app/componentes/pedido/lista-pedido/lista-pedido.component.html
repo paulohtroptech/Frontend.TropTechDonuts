@@ -1,1 +1,41 @@
-<p>lista-pedido works!</p>
+<h3 class="text-center mt-5 mb-5">Gerenciar pedidos</h3>
+<table class="table table-hover  mt-3">
+    <thead>
+        <tr class="text-center">
+            <th scope="col">#</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Data do Pedido</th>
+            <th scope="col">Valor total</th>
+            <th scope="col">Status</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr class="text-center" *ngFor="let pedido of listaDePedidos">
+            <th>{{pedido.id}}</th>
+            <td>{{pedido.cliente?.nome}}</td>
+            <td>{{pedido.dataPedido | date : 'dd/MM/yyyy'}}</td>
+            <td>R$ {{pedido.valorTotal.toFixed(2)}}</td>
+            <td>{{statusPedido[pedido.status]}}</td>
+
+            <th scope="row">
+                <a (click)="removerPedido(pedido.id)" class="btn btn-danger btn-sm me-2" title="Remover pedido">
+                    <i class="bi bi-trash text-black"></i>
+                </a>
+                <a (click)="editaPedido(pedido.id)" class="btn btn-warning btn-sm  me-2" title="Editar pedido">
+                    <i class="bi bi-pencil-fill text-black"></i>
+                </a>
+                <a (click)="editaEstoquePedido(pedido.id)" class="btn btn-success btn-sm me-2"
+                    title="Gerenciar estoque do pedido">
+                    <i class="bi bi-clipboard-data text-black"></i>
+                </a>
+                <a (click)="trocarStatusPedido(pedido.id)" class="btn btn-info btn-sm"
+                    title="Alterar status pedido">
+                    <i class="bi bi-arrow-left-right text-black"></i>
+                </a>
+                
+            </th>
+        </tr>
+    </tbody>
+</table>

@@ -51,7 +51,9 @@ export class ListaProdutoComponent implements OnInit {
 
   async removerProduto(id: number) {
 
-    let resposta = confirm("Você deseja realmente remover o produto?");
+    let produtoBuscado = this.listaDeProdutos.find((produto) => produto.id == id)
+
+    let resposta = confirm(`Você deseja realmente remover o produto ${produtoBuscado?.descricao}?`);
     if (resposta == true) {
       await this._produtoService.RemoverProduto(id).subscribe({
         error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem)),
@@ -72,10 +74,10 @@ export class ListaProdutoComponent implements OnInit {
     let resposta: boolean;
 
     if (produtoBuscado?.ativo) {
-      resposta = confirm("Você deseja realmente Desativar o produto?");
+      resposta = confirm(`Você deseja realmente Desativar o produto ${produtoBuscado.descricao}?`);
 
       if (resposta) {
-        
+
         const produtoAtualizado: IProduto = {
           id: produtoBuscado!.id,
           descricao: produtoBuscado!.descricao,
@@ -84,7 +86,7 @@ export class ListaProdutoComponent implements OnInit {
           dataValidade: produtoBuscado!.dataValidade,
           ativo: false,
         }
-        
+
         await this._produtoService.AtualizarStatusProduto(produtoAtualizado).subscribe({
           error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem)),
           complete: () => {
@@ -98,7 +100,7 @@ export class ListaProdutoComponent implements OnInit {
 
     } else {
 
-      resposta = confirm("Você deseja realmente Ativar o produto?");
+      resposta = confirm(`Você deseja realmente Ativar o produto ${produtoBuscado!.descricao}?`);
       if (resposta) {
 
         const produtoAtualizado: IProduto = {
