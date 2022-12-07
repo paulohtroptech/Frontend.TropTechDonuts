@@ -21,6 +21,10 @@ export class PedidoService {
     return this._metodoHttp.get<IPedido>(`${API_URL}/pedido/${id}`).pipe(take(1));
   }
 
+  BuscarDetalhePedidoPorId(id: number): Observable<IPedido> {
+    return this._metodoHttp.get<IPedido>(`${API_URL}/pedido/detalhe/${id}`).pipe(take(1));
+  }
+
   AdicionarPedido(pedidoParaAdicionar: IPedido): Observable<IPedido> {
     return this._metodoHttp.post<IPedido>(`${API_URL}/pedido`, pedidoParaAdicionar);
   }

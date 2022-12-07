@@ -33,7 +33,7 @@ export class ListaProdutoComponent implements OnInit {
       });
   }
 
-  async editaProduto(id: number) {
+  async rotaEditaProduto(id: number) {
     await this._router
       .navigate(['editar', id],
         {
@@ -41,7 +41,7 @@ export class ListaProdutoComponent implements OnInit {
         });
   }
 
-  async editaEstoqueProduto(id: number) {
+  async rotaEditaEstoqueProduto(id: number) {
     await this._router
       .navigate(['editar/estoque/', id],
         {

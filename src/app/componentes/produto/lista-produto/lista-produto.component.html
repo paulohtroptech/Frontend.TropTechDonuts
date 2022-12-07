@@ -19,19 +19,19 @@
             <td>{{produto.quantidadeEstoque}}</td>
             <td>{{produto.dataValidade | date : 'dd/MM/yyyy'}}</td>
             <th scope="row">
-                <a (click)="removerProduto(produto.id)" class="btn btn-danger btn-sm me-2" title="Remover produto">
-                    <i class="bi bi-trash text-black"></i>
-                </a>
-                <a (click)="editaProduto(produto.id)" class="btn btn-warning btn-sm  me-2" title="Editar produto">
+                <a (click)="rotaEditaProduto(produto.id)" class="btn btn-warning btn-sm  me-2" title="Editar produto">
                     <i class="bi bi-pencil-fill text-black"></i>
                 </a>
-                <a (click)="editaEstoqueProduto(produto.id)" class="btn btn-success btn-sm me-2"
+                <a (click)="trocarStatusProduto(produto.id)" class="btn btn-info btn-sm me-2"
+                    title="Ativar/Desativar produto">
+                    <i class="bi bi-arrow-left-right text-black"></i>
+                </a>
+                <a (click)="rotaEditaEstoqueProduto(produto.id)" class="btn btn-success btn-sm me-2"
                     title="Gerenciar estoque do produto">
                     <i class="bi bi-clipboard-data text-black"></i>
                 </a>
-                <a (click)="trocarStatusProduto(produto.id)" class="btn btn-info btn-sm"
-                    title="Ativar/Desativar produto">
-                    <i class="bi bi-arrow-left-right text-black"></i>
+                <a (click)="removerProduto(produto.id)" class="btn btn-danger btn-sm" title="Remover produto">
+                    <i class="bi bi-trash text-black"></i>
                 </a>
                 
             </th>

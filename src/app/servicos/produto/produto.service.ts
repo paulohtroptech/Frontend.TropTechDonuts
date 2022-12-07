@@ -18,6 +18,10 @@ export class ProdutoService {
     return this._metodoHttp.get<IProduto[]>(`${API_URL}/produto`);
   }
 
+  BuscarTodosProdutosAtivos(): Observable<IProduto[]> {
+    return this._metodoHttp.get<IProduto[]>(`${API_URL}/produto/ativo`);
+  }
+
   BuscarProdutoPorId(id: number): Observable<IProduto> {
     return this._metodoHttp.get<IProduto>(`${API_URL}/produto/${id}`).pipe(take(1));
   }

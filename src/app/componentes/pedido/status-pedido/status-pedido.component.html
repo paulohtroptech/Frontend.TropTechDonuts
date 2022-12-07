@@ -1,1 +1,28 @@
-<p>status-pedido works!</p>
+<div class="col-8 offset-2">
+    <h3 class="mb-3">Gerenciar status do Pedido</h3>
+    <form [formGroup]="formStatusPedido" (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm">
+        <div class="form-row mb-3">
+            <label class="form-label"><span class="fw-bold">Pedido:</span> {{id}}</label>
+        </div>
+        <div class="form-row mb-3">
+            <label Class="form-label"><span class="fw-bold">Status atual:</span> {{statusPedido[statusAtual]}}</label>
+        </div>
+        <div class="form-row mb-3">
+            <label for="status" class="form-label">Alterar status</label>
+            <select class="form-select" formControlName="status">
+                <option selected></option>
+                <option value="1">Andamento</option>
+                <option value="2">Transito</option>
+                <option value="3">Finalizado</option>
+            </select>
+        </div>
+        <div class="form-row mb-3">
+            <input type="submit" value="Enviar" class="btn btn-primary">
+        </div>
+
+        <div class="form-row mb-3">
+            <span class="text-danger">* Campos obrigatórios</span>
+        </div>
+
+    </form>
+</div>

@@ -1,1 +1,14 @@
-<p>detalhe-pedido works!</p>
+<div class="col-8 offset-2">
+    <h3 class="text-center mt-5 mb-5">Acompanhamento do pedido</h3>
+
+    <div class="progress mb-5">
+        <div class="progress-bar" role="progressbar" aria-label="Basic example" [style.width.%]="statusAtual*34"
+            aria-valuemax="100">{{porcentagem}}%</div>
+    </div>
+
+    <p><strong>Número:</strong> {{id}}</p>
+    <p><strong>Status atual:</strong> {{statusPedido[statusAtual]}}</p>
+    <p><strong>Cliente:</strong> {{nomeCliente}}</p>
+    <p><strong>Valor total:</strong> R$ {{valorTotal}}</p>
+
+</div>

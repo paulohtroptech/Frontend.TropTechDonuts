@@ -1,19 +1,10 @@
+import { ICliente } from "../cliente/ICliente"
+import { IProduto } from "../produto/IProduto"
+
 export interface IPedido {
     id: number,
-    cliente?: {
-        cpf: string,
-        nome: string,
-        dataNascimento: Date,
-        pontosFidelidade: number
-    },
-    produto: {
-        id: number,
-        descricao: string,
-        preco: number,
-        quantidadeEstoque: number,
-        dataValidade: Date,
-        ativo: true
-    },
+    cliente?: ICliente
+    produto: IProduto,
     dataPedido: Date,
     quantidade: number,
     valorTotal: number,

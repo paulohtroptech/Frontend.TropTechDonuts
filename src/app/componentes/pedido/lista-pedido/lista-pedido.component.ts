@@ -16,7 +16,6 @@ export class ListaPedidoComponent implements OnInit {
   pedidoBuscado?: IPedido;
 
   public statusPedido = StatusPedido;
-  public status = this.statusPedido.Andamento;
 
 
   constructor(
@@ -30,25 +29,28 @@ export class ListaPedidoComponent implements OnInit {
   }
 
 
-  private async _buscarTodosPedidos() {
+   async _buscarTodosPedidos() {
     await this._pedidoService.BuscarTodosPedidos()
       .subscribe({
-        next: (pedidos) => this.listaDePedidos = pedidos,
+        next: (pedidos) => {
+          this.listaDePedidos = pedidos
+        },
         error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem)),
       });
+      
   }
 
-  async editaPedido(id: number) {
+  async rotaEditaStatusPedido(id: number) {
     await this._router
-      .navigate(['editar', id],
+      .navigate(['editar/status/', id],
         {
           relativeTo: this._route
         });
   }
 
-  async editaEstoquePedido(id: number) {
+  async rotaDetalhesPedido(id: number) {
     await this._router
-      .navigate(['editar/estoque/', id],
+      .navigate(['detalhe', id],
         {
           relativeTo: this._route
         });
@@ -72,62 +74,6 @@ export class ListaPedidoComponent implements OnInit {
     }
   }
 
-  async trocarStatusPedido(id: number) {
 
-    this.pedidoBuscado = this.listaDePedidos.find((pedido) => pedido.id == id)
-
-    let resposta: boolean;
-
-    // if (pedidoBuscado?.ativo) {
-    //   resposta = confirm(`Você deseja realmente Desativar o produto ${pedidoBuscado.descricao}?`);
-
-    //   if (resposta) {
-
-    //     const produtoAtualizado: IPedido = {
-    //       id: pedidoBuscado!.id,
-    //       descricao: pedidoBuscado!.descricao,
-    //       preco: pedidoBuscado!.preco,
-    //       quantidadeEstoque: pedidoBuscado!.quantidadeEstoque,
-    //       dataValidade: pedidoBuscado!.dataValidade,
-    //       ativo: false,
-    //     }
-
-    //     await this._pedidoService.AtualizarStatusPedido(produtoAtualizado).subscribe({
-    //       error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem)),
-    //       complete: () => {
-    //         this._mensagemService.AdicionarMensagem("O Pedido foi Desativado com sucesso!")
-    //         setTimeout(() => {
-    //           window.location.reload();
-    //         }, 4000);
-    //       },
-    //     });
-    //   }
-
-    // } else {
-
-    //   resposta = confirm(`Você deseja realmente Ativar o produto ${pedidoBuscado!.descricao}?`);
-    //   if (resposta) {
-
-    //     const produtoAtualizado: IPedido = {
-    //       id: pedidoBuscado!.id,
-    //       descricao: pedidoBuscado!.descricao,
-    //       preco: pedidoBuscado!.preco,
-    //       quantidadeEstoque: pedidoBuscado!.quantidadeEstoque,
-    //       dataValidade: produtoBuscado!.dataValidade,
-    //       ativo: true,
-    //     }
-
-    //     await this._pedidoService.AtualizarStatusPedido(produtoAtualizado!).subscribe({
-    //       error: (e) => this._mensagemService.AdicionarMensagem(JSON.stringify(e.error.mensagem)),
-    //       complete: () => {
-    //         this._mensagemService.AdicionarMensagem("O Pedido foi Ativado com sucesso!")
-    //         setTimeout(() => {
-    //           window.location.reload();
-    //         }, 4000);
-    //       },
-    //     });
-    //   }
-    // }
-  }
 
 }

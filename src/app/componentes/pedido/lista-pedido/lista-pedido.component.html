@@ -20,21 +20,18 @@
             <td>{{statusPedido[pedido.status]}}</td>
 
             <th scope="row">
-                <a (click)="removerPedido(pedido.id)" class="btn btn-danger btn-sm me-2" title="Remover pedido">
-                    <i class="bi bi-trash text-black"></i>
+                <a (click)="rotaDetalhesPedido(pedido.id)" class="btn btn-success btn-sm me-2"
+                    title="Ver detalhes do pedido">
+                    <i class="bi bi-eye-fill  text-black"></i>
                 </a>
-                <a (click)="editaPedido(pedido.id)" class="btn btn-warning btn-sm  me-2" title="Editar pedido">
-                    <i class="bi bi-pencil-fill text-black"></i>
-                </a>
-                <a (click)="editaEstoquePedido(pedido.id)" class="btn btn-success btn-sm me-2"
-                    title="Gerenciar estoque do pedido">
-                    <i class="bi bi-clipboard-data text-black"></i>
-                </a>
-                <a (click)="trocarStatusPedido(pedido.id)" class="btn btn-info btn-sm"
-                    title="Alterar status pedido">
+                <a (click)="rotaEditaStatusPedido(pedido.id)" class="btn btn-info btn-sm me-2"
+                    title="Alterar status do pedido">
                     <i class="bi bi-arrow-left-right text-black"></i>
                 </a>
-                
+                <a (click)="removerPedido(pedido.id)" class="btn btn-danger btn-sm"
+                    title="Remover pedido">
+                    <i class="bi bi-trash text-black"></i>
+                </a>
             </th>
         </tr>
     </tbody>

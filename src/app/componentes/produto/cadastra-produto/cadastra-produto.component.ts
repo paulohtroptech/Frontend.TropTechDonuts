@@ -13,12 +13,10 @@ import { IProduto } from '../IProduto';
 export class CadastraProdutoComponent implements OnInit {
 
   formAdicionarProduto!: FormGroup;
-  listaDeClientes: IProduto[] = [];
 
   constructor(
     private _produtoService: ProdutoService,
     private _mensagemService: MensagemService,
-    private _router: Router
   ) { }
 
   ngOnInit(): void {

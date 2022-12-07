@@ -57,9 +57,6 @@ export class EstoqueProdutoComponent implements OnInit {
     });
   }
 
-
-
-
   get Id() {
     return this.formEstoqueProduto.get('id')!;
   }
@@ -80,9 +77,7 @@ export class EstoqueProdutoComponent implements OnInit {
       dataValidade: this.dataValidade,
       ativo: true,
     }
-
-    console.log(produtoAtualizado);
-
+    
     await this._produtoService
       .AtualizarQuantidadeProduto(produtoAtualizado)
       .subscribe({

@@ -1,1 +1,40 @@
-<p>cadastra-pedido works!</p>
+<div class="col-8 offset-2">
+    <h3 class="mb-3">Cadastrar pedido</h3>
+    <form [formGroup]="formAdicionarPedido" (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm">
+        <div class="form-row mb-3">
+            <label for="cpf" class="form-label">CPF <span>*</span></label>
+            <input type="text" name="cpf" formControlName="cpf" class="form-control">
+        </div>
+
+        <div class="form-row mb-3">
+            <label for="produto" class="form-label">Produto</label>
+            <select class="form-select" formControlName="produto">
+                <option *ngFor="let produto of listaDeProdutos" value="{{produto.id}}">
+                    {{produto.descricao}} - R$ {{produto.preco.toFixed(2)}}
+                </option>
+            </select>
+            <div class="text-danger mt-1" *ngIf="Produto!.invalid && formDirective.submitted">
+                <span *ngIf="Produto.errors?.['required']">Ops, selecione um produto.</span>
+            </div>
+        </div>
+
+        <div class="form-row mb-3">
+            <div class="mb-3">
+                <label for="quantidade" class="form-label">Quantidade <span>*</span></label>
+                <input formControlName="quantidade" type="number" min="1" step="1" name="quantidade" class="form-control">
+                <div class="text-danger" *ngIf="Quantidade!.invalid && formDirective.submitted">
+                    <span *ngIf="Quantidade.errors?.['required']">Ops, preencha o quantidade.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row mb-3">
+            <input type="submit" value="Enviar" class="btn btn-primary">
+        </div>
+
+        <div class="form-row mb-3">
+            <span class="text-danger">* Campos obrigatórios</span>
+        </div>
+
+    </form>
+</div>
