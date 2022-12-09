@@ -23,7 +23,7 @@ export class CadastraProdutoComponent implements OnInit {
 
     this.formAdicionarProduto = new FormGroup({
       descricao: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      preco: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      preco: new FormControl(null, [Validators.required, Validators.min(0.01)]),
       dataValidade: new FormControl(null, [Validators.required])
     })
 

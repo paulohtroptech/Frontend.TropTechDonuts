@@ -24,7 +24,7 @@ export class CadastraClienteComponent implements OnInit {
   ngOnInit(): void {
 
     this.formAdicionarCliente = new FormGroup({
-      cpf: new FormControl(null, [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
+      cpf: new FormControl(null, [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern("^[0-9]+$")]),
       nome: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       dataNascimento: new FormControl(null, [Validators.required])
     })

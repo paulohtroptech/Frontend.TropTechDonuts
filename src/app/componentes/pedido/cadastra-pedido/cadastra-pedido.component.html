@@ -2,12 +2,15 @@
     <h3 class="mb-3">Cadastrar pedido</h3>
     <form [formGroup]="formAdicionarPedido" (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm">
         <div class="form-row mb-3">
-            <label for="cpf" class="form-label">CPF <span>*</span></label>
-            <input type="text" name="cpf" formControlName="cpf" class="form-control">
+            <label for="cpf" class="form-label">CPF</label>
+            <input type="text" name="cpf" formControlName="cpf" class="form-control" pattern="^[0-9]+$">
+            <div class="text-danger mt-1" *ngIf="Cpf!.invalid && formDirective.submitted">
+                <p *ngIf="Cpf.errors?.['pattern']">Ops, o CPF deve conter apenas números.</p>
+            </div>
         </div>
 
         <div class="form-row mb-3">
-            <label for="produto" class="form-label">Produto</label>
+            <label for="produto" class="form-label">Produto <span>*</span></label>
             <select class="form-select" formControlName="produto">
                 <option *ngFor="let produto of listaDeProdutos" value="{{produto.id}}">
                     {{produto.descricao}} - R$ {{produto.preco.toFixed(2)}}
@@ -24,6 +27,7 @@
                 <input formControlName="quantidade" type="number" min="1" step="1" name="quantidade" class="form-control">
                 <div class="text-danger" *ngIf="Quantidade!.invalid && formDirective.submitted">
                     <span *ngIf="Quantidade.errors?.['required']">Ops, preencha o quantidade.</span>
+                    <span *ngIf="Quantidade.errors?.['min']">Ops, a quantidade deve ser maior que zero.</span>
                 </div>
             </div>
         </div>

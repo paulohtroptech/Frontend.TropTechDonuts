@@ -17,11 +17,11 @@
             <td>{{cliente.dataNascimento | date : 'dd/MM/yyyy'}}</td>
             <td>{{cliente.pontosFidelidade}}</td>
             <th scope="row">
-                <a (click)="removerCliente(cliente.cpf)" class="btn btn-danger btn-sm me-2" title="Remover cliente">
-                    <i class="bi bi-trash text-black"></i>
-                </a>
-                <a (click)="editaCliente(cliente.cpf)" class="btn btn-warning btn-sm" title="Editar cliente">
+                <a (click)="editaCliente(cliente.cpf)" class="btn btn-warning btn-sm me-2" title="Editar cliente">
                     <i class="bi bi-pencil-fill"></i>
+                </a>
+                <a (click)="removerCliente(cliente.cpf)" class="btn btn-danger btn-sm" title="Remover cliente">
+                    <i class="bi bi-trash text-black"></i>
                 </a>
             </th>
         </tr>

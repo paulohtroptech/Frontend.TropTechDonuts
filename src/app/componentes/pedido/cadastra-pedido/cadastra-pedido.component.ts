@@ -32,9 +32,9 @@ export class CadastraPedidoComponent implements OnInit {
 
 
     this.formAdicionarPedido = new FormGroup({
-      cpf: new FormControl(null),
+      cpf: new FormControl(null, [Validators.pattern("^[0-9]+$")]),
       produto: new FormControl(null, [Validators.required]),
-      quantidade: new FormControl(null, [Validators.required]),
+      quantidade: new FormControl(null, [Validators.required, Validators.min(1)]),
     })
 
   }

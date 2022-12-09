@@ -43,7 +43,7 @@ export class DetalhePedidoComponent implements OnInit {
       this.id = pedido.id;
       this.statusAtual = pedido.status;
       this.nomeCliente = pedido.cliente!.nome;
-      this.valorTotal = Number(pedido.valorTotal.toFixed(2));
+      this.valorTotal = Number(pedido.valorTotal);
       this.porcentagem = Math.round(this.statusAtual*33 + 1);
   }
 

@@ -1,0 +1,28 @@
+.banner {
+    background: url(../../../assets/delicious-donuts.jpg) no-repeat;
+    height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.banner-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    background-color: rgba(161,0,42, 0.6);
+}
+
+.banner-text h1{
+    font-size: 70px;
+}
+
+.banner-text p{
+    font-size: 20px;
+}

@@ -4,11 +4,12 @@
         <div class="form-row mb-3">
 
             <label for="cpf" class="form-label">CPF <span>*</span></label>
-            <input type="text" name="cpf" formControlName="cpf" class="form-control">
+            <input type="text" name="cpf" formControlName="cpf" class="form-control" pattern="^[0-9]+$">
             <div class="text-danger mt-1" *ngIf="Cpf!.invalid && formDirective.submitted">
-                <span *ngIf="Cpf.errors?.['required']">Ops, preencha o seu CPF.</span>
-                <span *ngIf="Cpf.errors?.['minlength']">Ops, seu CPF deve conter no mínimo 11 números.</span>
-                <span *ngIf="Cpf.errors?.['maxlength']">Ops, seu CPF deve conter no máximo 11 números.</span>
+                <p *ngIf="Cpf.errors?.['required']">Ops, preencha o seu CPF.</p>
+                <p *ngIf="Cpf.errors?.['pattern']">Ops, o CPF deve conter apenas números.</p>
+                <p *ngIf="Cpf.errors?.['minlength']">Ops, seu CPF deve conter no mínimo 11 números.</p>
+                <p *ngIf="Cpf.errors?.['maxlength']">Ops, seu CPF deve conter no máximo 11 números.</p>
             </div>
 
         </div>
@@ -18,8 +19,8 @@
                 <label for="nome" class="form-label">Nome <span>*</span></label>
                 <input formControlName="nome" type="text" name="nome" class="form-control" />
                 <div class="text-danger" *ngIf="Nome!.invalid && formDirective.submitted">
-                    <span *ngIf="Nome.errors?.['required']">Ops, preencha o seu nome.</span>
-                    <span *ngIf="Nome.errors?.['minlength']">Ops, seu nome deve ter pelo menos 3 caracteres.</span>
+                    <p *ngIf="Nome.errors?.['required']">Ops, preencha o seu nome.</p>
+                    <p *ngIf="Nome.errors?.['minlength']">Ops, seu nome deve ter pelo menos 3 caracteres.</p>
                 </div>
             </div>
         </div>
@@ -27,7 +28,7 @@
             <label for="DataNascimento" class="form-label">Data de nascimento <span>*</span></label>
             <input formControlName="dataNascimento" type="date" name="DataNascimento" class="form-control" />
             <div class="text-danger" *ngIf="DataNascimento!.invalid && formDirective.submitted">
-                <span *ngIf="DataNascimento.errors?.['required']">Ops, preencha a sua Data de Nascimento.</span>
+                <p *ngIf="DataNascimento.errors?.['required']">Ops, preencha a sua Data de Nascimento.</p>
             </div>
         </div>
         <div class="form-row mb-3">

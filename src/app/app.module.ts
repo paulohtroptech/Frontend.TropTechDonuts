@@ -20,7 +20,6 @@ import { IndexComponent } from './componentes/index/index.component';
 import { EstoqueProdutoComponent } from './componentes/produto/estoque-produto/estoque-produto.component';
 import { StatusPedidoComponent } from './componentes/pedido/status-pedido/status-pedido.component';
 import { DetalhePedidoComponent } from './componentes/pedido/detalhe-pedido/detalhe-pedido.component';
-import { AlertaComponent } from './componentes/alerta/alerta.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,6 @@ import { AlertaComponent } from './componentes/alerta/alerta.component';
     EstoqueProdutoComponent,
     MensagemComponent,
     IndexComponent,
-    AlertaComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,11 +10,11 @@
         </div>
         <div class="form-row mb-3">
             <div class="mb-3">
-                <label for="novaQuantidade" class="form-label">Nova quantidade <span>*</span></label>
+                <label for="novaQuantidade" class="form-label fw-bold">Nova quantidade <span>*</span></label>
                 <input formControlName="novaQuantidade" type="number" min="1" step="1" name="novaQuantidade" class="form-control">
                 <div class="text-danger" *ngIf="NovaQuantidade!.invalid && formDirective.submitted">
                     <span *ngIf="NovaQuantidade.errors?.['required']">Ops, preencha a nova quantidade.</span>
-                    <span *ngIf="NovaQuantidade.errors?.['minlength']">Ops, a nova quantidade deve ser maior que zero.</span>
+                    <span *ngIf="NovaQuantidade.errors?.['min']">Ops, a nova quantidade deve ser maior que zero.</span>
                 </div>
             </div>
         </div>

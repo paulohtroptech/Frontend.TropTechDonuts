@@ -40,7 +40,7 @@ export class EstoqueProdutoComponent implements OnInit {
 
     this.formEstoqueProduto = new FormGroup({
       id: new FormControl(null),
-      novaQuantidade: new FormControl(null, [Validators.required, Validators.minLength(1)])
+      novaQuantidade: new FormControl(null, [Validators.required, Validators.min(1)])
     })
 
 
